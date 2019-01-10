@@ -1,0 +1,8 @@
+spring: 
+  application:
+    name: zuul-service
+  cloud:
+      config:
+        uri: http://192.168.5.126:4001/
+        profile: dev
+        label: master
