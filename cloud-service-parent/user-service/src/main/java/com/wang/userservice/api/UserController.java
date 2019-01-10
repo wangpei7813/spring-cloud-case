@@ -1,17 +1,21 @@
 package com.wang.userservice.api;
 
 import com.wang.userservice.service.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.wang.userservice.utils.FastJsonConvertUtil;
+import com.wang.userservice.utils.RedisUtil;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
 @RestController
+@Slf4j
 public class UserController {
 
     @Resource
     private UserService userService;
+    @Resource
+    private RedisUtil redisUtil;
 
     @PostMapping("/login")
     public String login(@RequestParam("userId") String userId, @RequestParam("password") String password) throws Exception {
@@ -35,5 +39,10 @@ public class UserController {
 		return "getOrderList获取成功!----> "  + " ret2: " + ret2 ;
 	}*/
 
-
+	@GetMapping("/test")
+    public String test(@RequestHeader("token") String token, String userId) {
+	    log.info("token = {}", token);
+        Object o = redisUtil.get("user_info:" + userId);
+        return FastJsonConvertUtil.convertObjectToJSONWithNullValue(o);
+    }
 }
