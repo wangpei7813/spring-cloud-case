@@ -3,6 +3,7 @@ package com.wang.zuulservice.filter;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
+import com.wang.common.constant.RedisKey;
 import com.wang.zuulservice.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -68,7 +69,7 @@ public class AuthZuulFilter extends ZuulFilter {
             if(StringUtils.isNotBlank(cacheToken)) {
                 //取出来缓存token后,直接进行对比
                 if(token.equals(cacheToken)) {
-                    redisUtil.expire(cacheKey,300);
+                    redisUtil.expire(cacheKey, RedisKey.TOKEN_EXPIRE_TIME);
                     ctx.addZuulRequestHeader("token", "access token");
                 } else {
                     setResponseErrorInfo(ctx, 402 , " access token is error! ");

@@ -1,13 +1,11 @@
 package com.wang.userservice.async;
 
+import com.wang.common.util.FastJsonConvertUtil;
+import com.wang.userservice.listener.ApplicationFactory;
+import com.wang.userservice.utils.RedisUtil;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import com.wang.userservice.listener.ApplicationFactory;
-import com.wang.userservice.utils.FastJsonConvertUtil;
-import com.wang.userservice.utils.RedisUtil;
-import org.springframework.data.redis.core.HashOperations;
-import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * @Description: 异步加载用户信息

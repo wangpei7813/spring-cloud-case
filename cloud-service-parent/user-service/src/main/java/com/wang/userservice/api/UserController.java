@@ -1,7 +1,7 @@
 package com.wang.userservice.api;
 
+import com.wang.common.util.FastJsonConvertUtil;
 import com.wang.userservice.service.UserService;
-import com.wang.userservice.utils.FastJsonConvertUtil;
 import com.wang.userservice.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

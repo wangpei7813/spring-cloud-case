@@ -1,21 +1,16 @@
 package com.wang.userservice.service;
 
+import com.wang.common.constant.RedisKey;
 import com.wang.userservice.async.UserInfoAsyncQueue;
 import com.wang.userservice.async.UserLoader;
 import com.wang.userservice.utils.RedisUtil;
-import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.commons.lang3.time.DateUtils;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
 
 @Service
 public class UserService {
 
-    @Resource
-    private RedisTemplate<String, Object> redisTemplate;
     @Resource
     private RedisUtil redisUtil;
 
@@ -36,7 +31,7 @@ public class UserService {
             //3.2 再次去对token进行一个处理
             String cacheKey = "x-token" + ":" + userId;
 
-            redisUtil.set(cacheKey, token, 60);
+            redisUtil.set(cacheKey, token, RedisKey.TOKEN_EXPIRE_TIME);
 
             //5. 异步的去加载用户其他相关信息
             UserInfoAsyncQueue.submit(new UserLoader(userId));
