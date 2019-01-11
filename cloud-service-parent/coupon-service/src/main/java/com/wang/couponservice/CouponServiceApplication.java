@@ -7,6 +7,12 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
+/**
+ * @Description: @EnableFeignClients  开启代理配置
+ *               @EnableCircuitBreaker 开启断路器配置
+ * @author: wp
+ * @date: 2019/1/11 11:24
+ */
 @EnableFeignClients
 @EnableCircuitBreaker
 @EnableDiscoveryClient
