@@ -1,5 +1,6 @@
 package com.wang.order.api.feign;
 
+import com.wang.order.api.constant.OrderFeignConstants;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

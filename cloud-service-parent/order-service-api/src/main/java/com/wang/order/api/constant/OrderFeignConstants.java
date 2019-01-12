@@ -1,4 +1,4 @@
-package com.wang.order.api.feign;
+package com.wang.order.api.constant;
 
 
 public interface OrderFeignConstants {
