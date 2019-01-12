@@ -1,0 +1,3 @@
+# Auto Congigure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.wang.order.api.OrderProviderAutoConfiguration
