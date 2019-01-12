@@ -2,6 +2,7 @@ package com.wang.userservice.api;
 
 import com.wang.common.util.FastJsonConvertUtil;
 import com.wang.order.api.feign.OrderFeignClient;
+import com.wang.order.api.feign.OrderItemFeignClient;
 import com.wang.userservice.service.UserService;
 import com.wang.userservice.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,9 @@ public class UserController {
 
     @Resource
     private OrderFeignClient orderFeignClient;
+
+    @Resource
+    private OrderItemFeignClient itemFeignClient;
 
     @PostMapping("/login")
     public String login(@RequestParam("userId") String userId, @RequestParam("password") String password) throws Exception {
@@ -40,6 +44,11 @@ public class UserController {
 		System.err.println(" ret2: " + ret2);
 		return "getOrderList获取成功!----> "  + " ret2: " + ret2 ;
 	}
+
+	@GetMapping("getOrderItemList")
+	public String getOrderItemList() throws Exception{
+        return itemFeignClient.getOrderItemList();
+    }
 
 	@GetMapping("/test")
     public String test(@RequestHeader("token") String token, String userId) {
