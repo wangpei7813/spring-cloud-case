@@ -28,9 +28,14 @@ public class OrderController {
 		return "订单列表";
 	}
 
-	@GetMapping("get-id")
+	@GetMapping("/get-id")
 	public Long getId() throws Exception {
-	    return idFeignClient.getId(Constant.ORDER_ID_GENERATOR_KEY);
+	    return idFeignClient.createId();
+    }
+
+    @GetMapping(value="/test")
+    public Long test() throws Exception {
+        return idFeignClient.getId(Constant.ORDER_ID_GENERATOR_KEY);
     }
 	
 }

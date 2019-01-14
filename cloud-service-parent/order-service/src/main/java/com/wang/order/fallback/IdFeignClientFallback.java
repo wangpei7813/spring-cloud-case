@@ -1,5 +1,6 @@
 package com.wang.order.fallback;
 
+import com.wang.common.service.IdGeneratorService;
 import com.wang.generator.feign.IdFeignClient;
 import org.springframework.stereotype.Component;
 
@@ -9,8 +10,14 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class IdFeignClientFallback extends IdFeignClient.IdFeignClientHystrixFallBack {
+
     @Override
     public Long getId(String key) throws Exception {
-        return 1234L;
+        return IdGeneratorService.createId();
+    }
+
+    @Override
+    public Long createId() throws Exception {
+        return IdGeneratorService.createId();
     }
 }

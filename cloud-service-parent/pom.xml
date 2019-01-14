@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>order-service-api</module>
+        <module>id-generator-api</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
