@@ -12,14 +12,16 @@
 	<name>order-service</name>
 	<description>Demo project for Spring Boot</description>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
-
 	<dependencies>
         <dependency>
             <groupId>com.wang.cloud</groupId>
             <artifactId>service-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.wang.cloud</groupId>
+            <artifactId>id-generator-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
